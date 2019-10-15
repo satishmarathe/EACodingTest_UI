@@ -2,9 +2,6 @@ import React from "react";
 import MusicDetail from "./MusicDetail";
 import { appConfig } from "./config.js";
 
-
-
-
 class Music extends React.Component{
     state = {
         restApiData: [],
@@ -14,14 +11,14 @@ class Music extends React.Component{
 
     constructor(props){
         super(props);
-        this.test1 = this.test1.bind(this);
-        this.test2 = this.test2.bind(this);
+        this.forEachFestival = this.forEachFestival.bind(this);
+        this.forEachBand = this.forEachBand.bind(this);
 
         this.ManagerArr = [];
         this.Festival = {};
     }
 
-    test2(value2){
+    forEachBand(eachBand){
         //console.log("in value2 i/p data about Bands and M ",value2);
         /** we have all 3 **/
         //console.log("F,B,M",this.Festival,value2.name,value2.recordLabel);   
@@ -33,7 +30,7 @@ class Music extends React.Component{
            var foundSameManager = this.ManagerArr.findIndex(function(element) {
                //console.log("element.managerName",element.managerName);
                //console.log("value2.recordLabel",value2.recordLabel);
-               return element.managerName === value2.recordLabel;
+               return element.managerName === eachBand.recordLabel;
            });
            //console.log("what did we find for manager" ,foundSameManager);
            if(foundSameManager === -1){
@@ -44,10 +41,10 @@ class Music extends React.Component{
                    const sampleM = { 
                        bandsArrOp: [],                     
                    };                           
-                   sampleM.managerName = value2.recordLabel;
+                   sampleM.managerName = eachBand.recordLabel;
                    
                    const myBand = {
-                       bandName:value2.name,
+                       bandName:eachBand.name,
                        myFestivals:[]  
                    };
                    myBand.myFestivals.push({festivalName:this.Festival});
@@ -75,14 +72,14 @@ class Music extends React.Component{
                    //console.log("element.managerName",element.managerName);
                    //console.log("value2.recordLabel",value2.recordLabel);
                    //tempBarr1 = element.bandName;
-                   return element.bandName === value2.name;
+                   return element.bandName === eachBand.name;
                });
                if(foundSameBand === -1){
                    //console.log("did not find  same band 1");
                    /** band is different from what we have so add band and festival */
                        /** also add the F to the new B  */
                        const myBand = {
-                           bandName:value2.name,
+                           bandName:eachBand.name,
                            myFestivals:[]  
                        };
                        myBand.myFestivals.push({festivalName:this.Festival});
@@ -114,10 +111,10 @@ class Music extends React.Component{
            const sampleM = { 
                bandsArrOp: [],
            };  
-           sampleM.managerName = value2.recordLabel;
+           sampleM.managerName = eachBand.recordLabel;
            //console.log(musicLabelArrOp);
            const myBand = {
-             bandName:value2.name,
+             bandName:eachBand.name,
              myFestivals:[]  
            };
            /** now add B */
@@ -140,14 +137,14 @@ class Music extends React.Component{
            //console.log("first MBF = " , this.ManagerArr);
        }
        }
-       test1(value1){
+       forEachFestival(eachFestival){
            /** we have each element of the array */
            //console.log("in value1",value1);
-           this.Festival = value1.name;
+           this.Festival = eachFestival.name;
            //console.log(managerName);
            //console.log("F,B,M",festivalArrParam.name,bandsArrParam.name);
            
-           value1.bands.map(this.test2);
+           eachFestival.bands.map(this.forEachBand);
        }
        
         render(){
@@ -175,7 +172,7 @@ class Music extends React.Component{
                 console.log("NO ERROR");
 
                 /** for each Festival element in response iterate */
-                restApiData.map(this.test1);
+                restApiData.map(this.forEachFestival);
            
                 /** sorting of Manager data  */
                 this.ManagerArr.sort(function(a, b){
