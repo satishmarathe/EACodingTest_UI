@@ -14,7 +14,7 @@ function MusicDetail(props){
                         <div className="div-table-col" align="center">-</div>
                         <div className="div-table-col" align="center">-</div>
                         <div className="div-table-col" align="center">{c.festivalName}</div>
-                    </div>
+                    </div> 
                    
                 ))}
             </div>

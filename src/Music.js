@@ -3,6 +3,7 @@ import MusicDetail from "./MusicDetail";
 
 
 
+
 class Music extends React.Component{
     state = {
         restApiData: [],
@@ -214,7 +215,8 @@ class Music extends React.Component{
                     console.log("response status = ",response.status);
                     console.log("response statusText = ",response.statusText);
                     if(response.status === 429){
-                        throw ({status: response.status,message: "This failed due to 429"});
+                        //throw ({status: response.status,message: "This failed due to 429"});
+                        throw new RateLimitingError("This failed due to 429",response.status);
                     }else{
                         throw new Error(response.status);
                     }
@@ -230,13 +232,22 @@ class Music extends React.Component{
                 /** ensure error flag is set to indicate we have an issue  */
                 this.setState({isError:true});
                 console.log('error now is : ',error.status);
-                if(error.status === 429){
+                //if(error.status === 429){
+                if(error instanceof RateLimitingError){
                     console.log("we got a 429");
-                    this.setState({errorStatusCode:error.status});
+                    //this.setState({errorStatusCode:error.status});
+                    this.setState({errorStatusCode:error.code});
                 }else{
                     console.log("unexpected error");
                 }
             });
+    }
+}
+
+class RateLimitingError extends Error{
+    constructor(message,code){
+        super(message);
+        this.code = code;
     }
 }
 export default Music;
