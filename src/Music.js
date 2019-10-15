@@ -1,5 +1,6 @@
 import React from "react";
 import MusicDetail from "./MusicDetail";
+import { appConfig } from "./config.js";
 
 
 
@@ -205,9 +206,8 @@ class Music extends React.Component{
 
     componentDidMount(){
         console.log("<<<< inside component did mount >>>>>");
-        const url = 'http://localhost:9090/api/v1/festivals'
 
-        fetch(url)
+        fetch(appConfig.apiUrl)
             .then((response) => {
                 console.log("what is the response like",response);
                 console.log("response headers",response.headers);

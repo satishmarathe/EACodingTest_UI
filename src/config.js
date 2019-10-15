@@ -1,0 +1,1 @@
+export const appConfig = {apiUrl:"http://localhost:9090/api/v1/festivals"};
