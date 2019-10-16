@@ -11,4 +11,7 @@ npm start
 
   npm run build
     Bundles the app into static files for production.
+    
+# NOTE:
+To simulate rate check ( Throttling ) every 4th request to API will throw a 429 response back.
 
