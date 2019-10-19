@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Music from "./Music";
+import MusicDisplayer from "./MusicDisplayer";
 
-ReactDOM.render(<Music />, document.getElementById('root'));
+ReactDOM.render(<MusicDisplayer />, document.getElementById('root'));
 
