@@ -4,6 +4,7 @@ This is a React UI sample project that consumes an API and renders response
 # Software required :
 Node 8.11.3+
 npm  5.6.0
+enzyme 
 
 # Instructions :
 npm start
@@ -34,6 +35,11 @@ then in any test file you need to import 'adapter' :
 import adapter from "./setupTests";
 
 Without step2 and step3 enzyme does not work .
+
+# To test 
+Run the command :
+npm test
+This will run the specific tests in shallow mode and in full render mode.
 
 # Cheat sheet details
 1 >
