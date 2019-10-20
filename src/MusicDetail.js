@@ -4,16 +4,16 @@ function MusicDetail(props){
     const bands = props.test.bandsArrOp.map(
         (eachBand,j) => {return(
             <div key={j*100}>
-            <div className="div-table-row" kay={j}>
-                <div className="div-table-col" align="center">-</div>
-                <div className="div-table-col" >{eachBand.bandName}</div>
-                <div className="div-table-col" align="center">-</div>
+            <div className="div-table-row" key={j}>
+                <div className="div-table-col-mgr" align="center">-</div>
+                <div className="div-table-col-band" >{eachBand.bandName}</div>
+                <div className="div-table-col-festival" align="center">-</div>
             </div>
                 {eachBand.myFestivals.map((c, i) => (
                     <div className="div-table-row" key={i}>
-                        <div className="div-table-col" align="center">-</div>
-                        <div className="div-table-col" align="center">-</div>
-                        <div className="div-table-col" align="center">{c.festivalName}</div>
+                        <div className="div-table-col-mgr" align="center">-</div>
+                        <div className="div-table-col-band" align="center">-</div>
+                        <div className="div-table-col-festival" align="center">{c.festivalName}</div>
                     </div> 
                    
                 ))}
@@ -25,9 +25,9 @@ function MusicDetail(props){
     return(
         <div>
             <div className="div-table-row" >
-                <div className="div-table-col" align="center">{props.test.managerName}</div>
-                <div className="div-table-col" >-</div>
-                <div className="div-table-col" >-</div>
+                <div className="div-table-col-mgr" align="center">{props.test.managerName}</div>
+                <div className="div-table-col-band" >-</div>
+                <div className="div-table-col-festival" >-</div>
             </div>            
             
             <div>{bands}</div>

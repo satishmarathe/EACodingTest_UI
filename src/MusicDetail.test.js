@@ -42,6 +42,6 @@ describe("Testing MusicDetail Component", () => {
             ]}} />
         );
         //throw wrapper.debug();
-        expect (wrapper.find("div.div-table-row").at(1).find("div.div-table-col").at(1).text()).toEqual("ACDC");
+        expect (wrapper.find("div.div-table-row").at(1).find("div.div-table-col-band").at(0).text()).toEqual("ACDC");
     });
 });

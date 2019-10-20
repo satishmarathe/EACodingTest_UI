@@ -842,7 +842,7 @@ caption {
    clear: both;
  }
 
- .div-table-col{
+ .div-table-col,.div-table-col-mgr,.div-table-col-band,.div-table-col-festival{
   display: table-column;
   width: 200px;
   float: left;
